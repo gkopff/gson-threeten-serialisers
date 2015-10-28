@@ -23,24 +23,24 @@
 
 package com.fatboyindustrial.gsonjavatime;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
+import org.junit.Test;
+import org.threeten.bp.Instant;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
+import org.threeten.bp.LocalTime;
+import org.threeten.bp.OffsetDateTime;
+import org.threeten.bp.OffsetTime;
+import org.threeten.bp.ZoneId;
+import org.threeten.bp.ZoneOffset;
+import org.threeten.bp.ZonedDateTime;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
-import org.junit.Test;
-
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.OffsetDateTime;
-import java.time.OffsetTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
-
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 /**
  * Tests for {@link Converters}.
@@ -92,7 +92,7 @@ public class ConvertersTest
     container.ot = OffsetTime.of(container.lt, ZoneOffset.ofHours(10));
     container.zdt = ZonedDateTime.of(container.ld, container.lt, ZoneId.of("Australia/Brisbane"));
     container.i = container.odt.toInstant();
-    
+
     final JsonObject serialized = new JsonObject();
     serialized.add("ld", new JsonPrimitive("1969-07-21"));
     serialized.add("lt", new JsonPrimitive("12:56:00"));
@@ -104,7 +104,7 @@ public class ConvertersTest
 
     final String jsonString = gson.toJson(serialized);
     final Container deserialised = gson.fromJson(jsonString, Container.class);
-    
+
     assertThat(deserialised.ld, is(container.ld));
     assertThat(deserialised.ldt, is(container.ldt));
     assertThat(deserialised.lt, is(container.lt));

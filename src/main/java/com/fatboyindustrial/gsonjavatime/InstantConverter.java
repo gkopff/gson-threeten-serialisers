@@ -23,6 +23,11 @@
 
 package com.fatboyindustrial.gsonjavatime;
 
+import java.lang.reflect.Type;
+
+import org.threeten.bp.Instant;
+import org.threeten.bp.format.DateTimeFormatter;
+
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -30,10 +35,6 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-
-import java.lang.reflect.Type;
-import java.time.Instant;
-import java.time.format.DateTimeFormatter;
 
 /**
  * GSON serialiser/deserialiser for converting {@link Instant} objects.
@@ -58,7 +59,7 @@ public class InstantConverter implements JsonSerializer<Instant>, JsonDeserializ
    * @return a JsonElement corresponding to the specified object.
    */
   @Override
-  public JsonElement serialize(Instant src, Type typeOfSrc, JsonSerializationContext context)
+  public JsonElement serialize(final Instant src, final Type typeOfSrc, final JsonSerializationContext context)
   {
     return new JsonPrimitive(FORMATTER.format(src));
   }
@@ -79,8 +80,8 @@ public class InstantConverter implements JsonSerializer<Instant>, JsonDeserializ
    * @throws JsonParseException if json is not in the expected format of {@code typeOfT}
    */
   @Override
-  public Instant deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException
+  public Instant deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) throws JsonParseException
   {
-    return FORMATTER.parse(json.getAsString(), Instant::from);
+        return FORMATTER.parse (json.getAsString (), Instant.FROM);
   }
 }

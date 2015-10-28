@@ -23,17 +23,18 @@
 
 package com.fatboyindustrial.gsonjavatime;
 
+import java.lang.reflect.Type;
+
+import org.threeten.bp.Instant;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
+import org.threeten.bp.LocalTime;
+import org.threeten.bp.OffsetDateTime;
+import org.threeten.bp.OffsetTime;
+import org.threeten.bp.ZonedDateTime;
+
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.OffsetDateTime;
-import java.time.OffsetTime;
-import java.time.ZonedDateTime;
 
 /**
  * The {@code Converters} class contains static methods for registering Java Time converters.
@@ -67,7 +68,7 @@ public class Converters
    * @param builder The GSON builder to register the converters with.
    * @return A reference to {@code builder}.
    */
-  public static GsonBuilder registerAll(GsonBuilder builder)
+  public static GsonBuilder registerAll(final GsonBuilder builder)
   {
     if (builder == null) { throw new NullPointerException("builder cannot be null"); }
 
@@ -87,7 +88,7 @@ public class Converters
    * @param builder The GSON builder to register the converter with.
    * @return A reference to {@code builder}.
    */
-  public static GsonBuilder registerLocalDate(GsonBuilder builder)
+  public static GsonBuilder registerLocalDate(final GsonBuilder builder)
   {
     builder.registerTypeAdapter(LOCAL_DATE_TYPE, new LocalDateConverter());
 
@@ -99,7 +100,7 @@ public class Converters
    * @param builder The GSON builder to register the converter with.
    * @return A reference to {@code builder}.
    */
-  public static GsonBuilder registerLocalDateTime(GsonBuilder builder)
+  public static GsonBuilder registerLocalDateTime(final GsonBuilder builder)
   {
     builder.registerTypeAdapter(LOCAL_DATE_TIME_TYPE, new LocalDateTimeConverter());
 
@@ -111,7 +112,7 @@ public class Converters
    * @param builder The GSON builder to register the converter with.
    * @return A reference to {@code builder}.
    */
-  public static GsonBuilder registerLocalTime(GsonBuilder builder)
+  public static GsonBuilder registerLocalTime(final GsonBuilder builder)
   {
     builder.registerTypeAdapter(LOCAL_TIME_TYPE, new LocalTimeConverter());
 
@@ -123,7 +124,7 @@ public class Converters
    * @param builder The GSON builder to register the converter with.
    * @return A reference to {@code builder}.
    */
-  public static GsonBuilder registerOffsetDateTime(GsonBuilder builder)
+  public static GsonBuilder registerOffsetDateTime(final GsonBuilder builder)
   {
     builder.registerTypeAdapter(OFFSET_DATE_TIME_TYPE, new OffsetDateTimeConverter());
 
@@ -135,7 +136,7 @@ public class Converters
    * @param builder The GSON builder to register the converter with.
    * @return A reference to {@code builder}.
    */
-  public static GsonBuilder registerOffsetTime(GsonBuilder builder)
+  public static GsonBuilder registerOffsetTime(final GsonBuilder builder)
   {
     builder.registerTypeAdapter(OFFSET_TIME_TYPE, new OffsetTimeConverter());
 
@@ -147,7 +148,7 @@ public class Converters
    * @param builder The GSON builder to register the converter with.
    * @return A reference to {@code builder}.
    */
-  public static GsonBuilder registerZonedDateTime(GsonBuilder builder)
+  public static GsonBuilder registerZonedDateTime(final GsonBuilder builder)
   {
     builder.registerTypeAdapter(ZONED_DATE_TIME_TYPE, new ZonedDateTimeConverter());
 
@@ -159,10 +160,10 @@ public class Converters
    * @param builder The GSON builder to register the converter with.
    * @return A reference to {@code builder}.
    */
-  public static GsonBuilder registerInstant(GsonBuilder builder)
+  public static GsonBuilder registerInstant(final GsonBuilder builder)
   {
     builder.registerTypeAdapter(INSTANT_TYPE, new InstantConverter());
-    
+
     return builder;
   }
 }

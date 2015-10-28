@@ -23,16 +23,17 @@
 
 package com.fatboyindustrial.gsonjavatime;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
+import java.lang.reflect.Type;
+
+import org.junit.Test;
+import org.threeten.bp.Instant;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import org.junit.Test;
-
-import java.lang.reflect.Type;
-import java.time.Instant;
-
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 /**
  * Tests for {@link InstantConverter}.
@@ -75,7 +76,7 @@ public class InstantConverterTest
    * @param builder The GSON builder to register the converter with.
    * @return A reference to {@code builder}.
    */
-  private static GsonBuilder registerInstant(GsonBuilder builder)
+  private static GsonBuilder registerInstant(final GsonBuilder builder)
   {
     builder.registerTypeAdapter(INSTANT_TYPE, new InstantConverter());
 

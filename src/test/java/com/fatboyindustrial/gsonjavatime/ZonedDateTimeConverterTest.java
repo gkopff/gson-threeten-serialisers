@@ -23,16 +23,17 @@
 
 package com.fatboyindustrial.gsonjavatime;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
+import java.lang.reflect.Type;
+
+import org.junit.Test;
+import org.threeten.bp.ZonedDateTime;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import org.junit.Test;
-
-import java.lang.reflect.Type;
-import java.time.ZonedDateTime;
-
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 /**
  * Tests for {@link ZonedDateTimeConverter}.

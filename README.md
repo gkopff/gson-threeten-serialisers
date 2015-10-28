@@ -24,6 +24,10 @@ final String json = gson.toJson(original);
 final OffsetDateTime reconstituted = gson.fromJson(json, OffsetDateTime.class);
 ````
 
+## Update for threeten backport
+This version is forked to work with the threeten backport, the usage is the same as in Java 8.
+
+
 ## Testing
 
 Unrelated to `gson-javatime-serialisers` itself, but if you're working with Java 8 time, you may be interested in [`spencerwi/hamcrest-jdk8-time`][3]

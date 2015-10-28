@@ -23,6 +23,11 @@
 
 package com.fatboyindustrial.gsonjavatime;
 
+import java.lang.reflect.Type;
+
+import org.threeten.bp.OffsetTime;
+import org.threeten.bp.format.DateTimeFormatter;
+
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -30,10 +35,6 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-
-import java.lang.reflect.Type;
-import java.time.OffsetTime;
-import java.time.format.DateTimeFormatter;
 
 /**
  * GSON serialiser/deserialiser for converting {@link OffsetTime} objects.
@@ -58,7 +59,7 @@ public class OffsetTimeConverter implements JsonSerializer<OffsetTime>, JsonDese
    * @return a JsonElement corresponding to the specified object.
    */
   @Override
-  public JsonElement serialize(OffsetTime src, Type typeOfSrc, JsonSerializationContext context)
+  public JsonElement serialize(final OffsetTime src, final Type typeOfSrc, final JsonSerializationContext context)
   {
     return new JsonPrimitive(FORMATTER.format(src));
   }
@@ -79,9 +80,9 @@ public class OffsetTimeConverter implements JsonSerializer<OffsetTime>, JsonDese
    * @throws JsonParseException if json is not in the expected format of {@code typeOfT}
    */
   @Override
-  public OffsetTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+  public OffsetTime deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
       throws JsonParseException
   {
-    return FORMATTER.parse(json.getAsString(), OffsetTime::from);
+        return FORMATTER.parse (json.getAsString (), OffsetTime.FROM);
   }
 }
